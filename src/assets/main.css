@@ -1,0 +1,18 @@
+@import './base.css';
+
+#app {
+  font-weight: normal;
+}
+
+a,
+.green {
+  text-decoration: none;
+  color: rgb(21, 91, 196);
+  transition: 0.4s;
+}
+
+@media (hover: hover) {
+  nav a:hover {
+    background-color: hsla(224, 90%, 55%, 0.2);
+  }
+}
