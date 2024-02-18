@@ -59,9 +59,30 @@
 }
 
 @font-face {
-  font-family: "MASQUE";
-  src: url('fonts/MASQUE/MASQUE__.ttf') format('truetype');
+  font-family: "GeneralSans";
+  src: url('fonts/GeneralSans_Complete/GeneralSans-Regular.otf') format('opentype');
 }
+
+@font-face {
+  font-family: "GeneralSansBold";
+  src: url('fonts/GeneralSans_Complete/GeneralSans-Bold.otf') format('opentype');
+}
+
+@font-face {
+  font-family: "GeneralSansMedium";
+  src: url('fonts/GeneralSans_Complete/GeneralSans-Medium.otf') format('opentype');
+}
+
+@font-face {
+  font-family: "GeneralSansSemiBold";
+  src: url('fonts/GeneralSans_Complete/GeneralSans-Semibold.otf') format('opentype');
+}
+
+@font-face {
+  font-family: "GeneralSansLight";
+  src: url('fonts/GeneralSans_Complete/GeneralSans-Light.otf') format('opentype');
+}
+
 
 body {
   min-height: 100vh;
@@ -72,16 +93,7 @@ body {
     background-color 0.5s;
   line-height: 1.6;
   font-family:
-    Inter,
-    -apple-system,
-    BlinkMacSystemFont,
-    'Segoe UI',
-    Roboto,
-    Oxygen,
-    Ubuntu,
-    Cantarell,
-    'Fira Sans',
-    'Droid Sans',
+    'GeneralSans',
     'Helvetica Neue',
     sans-serif;
   font-size: 15px;

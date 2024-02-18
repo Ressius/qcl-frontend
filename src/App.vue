@@ -1,21 +1,21 @@
 <script setup>
 import { RouterLink, RouterView } from 'vue-router'
-import HelloWorld from './components/HelloWorld.vue'
 </script>
 
 <template>
   <header>
+    <title>QCL - Quebec Champions League</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Play&display=swap" rel="stylesheet"> 
-    <img alt="Vue logo" class="logo" src="@/assets/organisateur.png" width="60" height="60" />
+    <a class="logo">QCL</a>
     <nav>
-      <RouterLink to="/">Home</RouterLink>
-      <RouterLink to="/stream">Stream</RouterLink>
-      <RouterLink to="/equipe">Équipe</RouterLink>
+      <RouterLink to="/">Acceuil</RouterLink>
       <RouterLink to="/franchises">Franchises</RouterLink>
+      <RouterLink to="/equipe">L'équipe</RouterLink>
+      <RouterLink to="/horaire">Horaire</RouterLink>
+      <RouterLink to="/stats">Statistiques</RouterLink>
     </nav>
-    <div class="fade"></div>
   </header>
 
   <RouterView />
@@ -23,23 +23,23 @@ import HelloWorld from './components/HelloWorld.vue'
     <div class="footer">
     <div class="row">
       <a href="https://www.twitch.tv/naniqc_"><i class="fa fa-brands fa-twitch"></i></a>
-      <a href="https://discord.gg/sgGXF8pZ9G"><i class="fa fa-brands fa-discord"></i></a>
+      <a href="https://discord.gg/qcl"><i class="fa fa-brands fa-discord"></i></a>
       <a href="https://www.youtube.com/@QCLigue"><i class="fa fa-brands fa-youtube"></i></a>
-      <a href="https://twitter.com/qclontop"><i class="fa fa-brands fa-twitter"></i></a>
+      <a href="https://twitter.com/qclontop"><i class="fa fa-brands fa-x-twitter"></i></a>
     </div>
 
     <div class="row">
         <ul>
-          <li><a href="#">Contactez Nous</a></li>
-          <li><a href="#">Nos Services</a></li>
-          <li><a href="#">Politiques</a></li>
-          <li><a href="#">Termes et conditions</a></li>
-          <li><a href="#">Carières</a></li>
+          <li><a href="/">Acceuil</a></li>
+          <li><a href="/franchises">Franchises</a></li>
+          <li><a href="#">L'équipe</a></li>
+          <li><a href="#">Horaire</a></li>
+          <li><a href="#">Statistiques</a></li>
         </ul>
     </div>
 
     <div class="row">
-      QCL Copyright © 2023 Quebec Champions League - Tout droits réservés || Conçu par Anthony Dumulong
+      QCL Copyright © 2024 Quebec Champions League - Tout droits réservés || Conçu par Anthony Dumulong
     </div>
   </div>
 </footer>
@@ -59,8 +59,11 @@ header {
 
 .logo {
   left: 75px;
-  top: 10px;
+  top: 5px;
   position: absolute;
+  color: white;
+  font-size: 40px;
+  font-family: "GeneralSansSemiBold";
 }
 
 .fade{
@@ -69,16 +72,17 @@ header {
 }
 
 nav {
+  border-left: 1px solid white;
   display: block;
-  font-size: 20px;
+  font-size: 18px;
+  padding: 5px;
   text-align: left;
-  margin-top: 1.7rem;
-  margin-left: 175px;
+  margin-top: 1.4rem;
+  margin-left: 200px;
 }
 
 nav a.router-link-exact-active {
   color: white;
-  border-bottom: 1px solid white;
 }
 
 nav a.router-link-exact-active:hover {
@@ -89,7 +93,6 @@ nav a {
   display: inline-block;
   padding: 0 1rem;
   margin: 0 1rem;
-  border-bottom: 1px solid var(--color-border);
 }
 
 body{
@@ -99,7 +102,7 @@ overflow-x:hidden;
 
 footer{
   padding:30px 0px;
-  font-family: 'Play', sans-serif;
+  font-family: 'GeneralSans', sans-serif;
   text-align:center;
   position: absolute;
   width: 100%;
@@ -119,6 +122,7 @@ font-size:0.8em;
 text-decoration:none;
 color:gray;
 transition:0.5s;
+font-size: 16px;
 }
 
 .footer .row a:hover{
@@ -135,8 +139,17 @@ margin:0px 30px;
 }
 
 .footer .row a i{
-font-size:2em;
+font-size:1.1em;
+background-color: #0039D2;
+color: white;
+padding: 15px;
+border-radius: 35px;
 margin:0% 1%;
+}
+.footer .row a i:hover{
+  transition: 0.5s;
+  background-color: white;
+  color: black;
 }
 
 @media (max-width:720px){

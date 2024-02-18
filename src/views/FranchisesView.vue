@@ -78,11 +78,14 @@ On se voit bientôt la gang</p>
 }
 
 .franchise{
-  border: 1px solid rgba(255, 255, 255, 0.4);
+  border: 2px solid rgb(21, 91, 196);
   border-radius: 2px;
   display: block;
   position: inherit;
   margin-top: 25px;
+  background-image: url('../assets/back.png');
+  background-position:left 60% bottom 100%;
+  background-size: cover;
 }
 
 .contenttext{
