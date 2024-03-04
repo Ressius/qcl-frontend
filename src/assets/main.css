@@ -1,7 +1,15 @@
 @import './base.css';
 
+html{
+  scroll-behavior:smooth;
+}
+
 #app {
   font-weight: normal;
+}
+
+.hide{
+  display: none;
 }
 
 a,

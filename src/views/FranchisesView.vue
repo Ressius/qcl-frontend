@@ -1,67 +1,37 @@
 <script setup>
+import SmallHeroHeader from '../components/SmallHeroHeader.vue';
+import { store } from '../store.js'
 
 </script>
 
 <template>
   <main>
+    <SmallHeroHeader msg="Les Franchises" />
     <div class="content">
+      <div v-if="store.franchises.length === 0" class="lds-ring"><div></div><div></div><div></div><div></div></div>
+      <div class="allfranchises">
+        <div class="menufranchise" v-for="franchise in store.franchises">
+          <a :href="'#franchise-' + franchise.id">
+            <img :src="franchise.logo" />
+          </a>
+        </div>
+      </div>
       <div class="title">
-        <h1 class="green">Franchises</h1>
-        <div class="franchise">
+        <div v-for="franchise in store.franchises" :id="'franchise-' + franchise.id" class="franchise">
           <div class="img">
-            <img src="../assets/teams/yummy.png">
+            <img :src="franchise.logo">
           </div>
           <div class="contenttext">
-            <h3>Yummy Sport</h3>
-            <p>Yummy Sport est une compagnie qui oeuvre dans le domaine des suppléments sportif. Étant gamers également, nous avons développé une formule e-Sport pour améliorer le focus et la concentration. Le tout en utilisant seulement que des produits naturels. Commandez directement en ligne https://yummysport.com/collections/gaming/products/yummy-sport-play et utilisez le code "PLAY1v9" pour 20% de rabais!</p>
+            <h3>{{ franchise.name }}</h3>
           </div>
-        </div>
-
-        <div class="franchise">
-          <div class="img">
-            <img src="../assets/teams/n9tf.png">
-          </div>
-          <div class="contenttext">
-            <h3>Nine Tailed Fox</h3>
-            <p>L'organisation Nine Tailed Fox est une communauté de gaming centrée sur le jeu League of Legends. Notre volonté est de réunir des passionnés du jeu pour organiser des équipes et participer à des ligues/tournois eSports. Le but est d’inclure le plus de joueurs possible, autant ceux qui veulent jouer de façon plus relaxe que ceux qui veulent tenter de s’améliorer au maximum.</p>
-          </div>
-        </div>
-
-        <div class="franchise">
-          <div class="img">
-            <img src="../assets/teams/yuzu.png">
-          </div>
-          <div class="contenttext">
-            <h3>Yuzu Sushi de St-Nicloas</h3>
-            <p>Wassup people de la QCL<br><br>
-
-Moi c'est Daveloune, propriétaire du Yuzu St-Nicolas! J'espère que la team va en faire voir de toute les couleurs à tout le Québec, autant sur le rift que dans vos assisettes 🍣
-De plus, je vous offre à tous une promotion 😉
-Du 13 Août au 12 Novembre, mentionnez "Daveloune" en salle et obtenez un 15% de rabais sur votre commande!! Non jumelable avec toute autres promotions.
-Restez à l'affût, j'aime en redonner à la communauté québécoise de League avec promo et concour flash 😉
-Si on ne se voit pas au Yuzu Sushi de St-Nicolas, vous pouvez passer ici https://www.twitch.tv/daveloune, du gros OTP Nami 3th Na, little bit of coaching and troll! 
-<br><br>
-On se voit bientôt la gang</p>
-          </div>
-        </div>
-
-        <div class="franchise">
-          <div class="img">
-            <img src="../assets/teams/yummy.png">
-          </div>
-          <div class="contenttext">
-            <h3>Yummy Sport </h3>
-            <p>Yummy Sport est une compagnie qui oeuvre dans le domaine des suppléments sportif. Étant gamers également, nous avons développé une formule e-Sport pour améliorer le focus et la concentration. Le tout en utilisant seulement que des produits naturels. Commandez directement en ligne https://yummysport.com/collections/gaming/products/yummy-sport-play et utilisez le code "PLAY1v9" pour 20% de rabais!</p>
-          </div>
-        </div>
-
-        <div class="franchise">
-          <div class="img">
-            <img src="../assets/teams/yummy.png">
-          </div>
-          <div class="contenttext">
-            <h3>Yummy Sport </h3>
-            <p>Yummy Sport est une compagnie qui oeuvre dans le domaine des suppléments sportif. Étant gamers également, nous avons développé une formule e-Sport pour améliorer le focus et la concentration. Le tout en utilisant seulement que des produits naturels. Commandez directement en ligne https://yummysport.com/collections/gaming/products/yummy-sport-play et utilisez le code "PLAY1v9" pour 20% de rabais!</p>
+          <div v-for="team in franchise.teams" class="team">
+            <a target="_blank" :href="'https://www.op.gg/multisearch/na?summoners=' + encodeURIComponent(team.opgg)" class="tname">{{ team.name }}</a>
+            <div class="players">
+              <div v-for="player in team.players" class="player">
+                <img class="playericon" :src="'/icons/' + player.role + '.svg'" />
+                <a class="playername" target="_blank" :href=" player.opgg.includes(',') ? 'https://www.op.gg/multisearch/na?summoners=' + encodeURIComponent(player.opgg) : 'https://www.op.gg/summoners/na/' + player.opgg.replace('#','-')">{{ player.ign }}</a>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -70,22 +40,95 @@ On se voit bientôt la gang</p>
 </template>
 
 <style scoped>
+
+.title{
+  padding-top: 60px;
+}
 .content{
-  margin-top: 80px;
-  width: 60%;
+  padding-top: 100px;
+  width: 100%;
+  font-family: "GeneralSans";
+}
+
+.allfranchises{
+  display: flex;
+  width: 80vw;
   margin: auto;
-  margin-top: 80px;
+  background-color: rgba(0,0,0,0.5);
+  border-radius: 50px;
+  padding: 20px 30px;
+  justify-content: space-evenly;
+}
+
+.menufranchise img{
+  height: 90px;
+  margin: auto;
+  bottom: 0;
+}
+
+.players{
+  display: flex;
+  justify-content: space-evenly;
+  width: 100%;
+}
+.player{
+  display: flex;
+  min-width: 100px;
+}
+
+.menufranchise{
+  border-radius: 30px;
+  display: flex;
+  height: 100px;
+  padding: 5px 20px 15px 20px;
+}
+.menufranchise:hover{
+  background-color: rgb(1, 14, 48);
+  transition: 0.5s;
+}
+.playername{
+  line-height: 50px;
+  padding-left:15px;
+  white-space: nowrap;
+}
+
+.playername:hover{
+  transition: 0.5s;
+  color: rgba(0, 57, 210, 1);
+}
+
+.tname{
+  background-color: rgba(0, 57, 210, 1);
+  padding: 10px 10px;
+  line-height: 30px;
+  text-align: center;
+  width: 200px;
+  color: white;
+  border-radius: 20px;
+}
+
+.tname:hover{
+  transition: 0.5s;
+  background-color: white;
+  color: black;
+}
+
+.team{
+  font-size: 18px;
+  display: flex;
+  background-color: rgba(0,0,0,0.5);
+  width: 100%;
+  padding: 20px;
+  border-radius: 40px;
+  margin: 10px 0;
 }
 
 .franchise{
-  border: 2px solid rgb(21, 91, 196);
-  border-radius: 2px;
-  display: block;
-  position: inherit;
-  margin-top: 25px;
-  background-image: url('../assets/back.png');
-  background-position:left 60% bottom 100%;
-  background-size: cover;
+  padding: 50px 0;
+  width: 80vw;
+  margin: auto;
+  transition:0.5s;
+  scroll-margin-top: 50px;
 }
 
 .contenttext{
@@ -95,37 +138,23 @@ On se voit bientôt la gang</p>
 }
 
 .img {
-  width: 150px;
-  position: absolute;
-  margin-left: -60px;
-  margin-top: 20px;
+  float: left;
 }
 
 .img img{
-  max-width: 90%;
+  height: 100px;
   margin: auto;
-}
-
-p{
-  display: inline-block;
-}
-
-h1 {
-  font-weight: 500;
-  font-size: 2.6rem;
-  position: relative;
+  transition:0.5s;
 }
 
 h3 {
-  font-size: 1.2rem;
+  font-family: "GeneralSansSemiBold";
+  font-size: 1.8rem;
+  position: inherit;
+  margin-left: 30px;
 }
-.content h1 {
-  margin-bottom: 40px;
-}
-.content h1,
 .content h3 {
   position: inherit;
-  font-size: 40px;
   margin-bottom: 15px;
 }
 
@@ -133,6 +162,42 @@ h3 {
   .title h1,
   .title h3 {
     text-align: left;
+  }
+}
+
+.lds-ring {
+  margin: auto;
+  padding: 200px;
+  width: 80px;
+  height: 80px;
+}
+.lds-ring div {
+  box-sizing: border-box;
+  display: block;
+  position: absolute;
+  width: 64px;
+  height: 64px;
+  margin: 8px;
+  border: 8px solid #fff;
+  border-radius: 50%;
+  animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+  border-color: #fff transparent transparent transparent;
+}
+.lds-ring div:nth-child(1) {
+  animation-delay: -0.45s;
+}
+.lds-ring div:nth-child(2) {
+  animation-delay: -0.3s;
+}
+.lds-ring div:nth-child(3) {
+  animation-delay: -0.15s;
+}
+@keyframes lds-ring {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
   }
 }
 </style>

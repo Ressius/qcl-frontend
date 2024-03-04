@@ -83,6 +83,9 @@
   src: url('fonts/GeneralSans_Complete/GeneralSans-Light.otf') format('opentype');
 }
 
+.content{
+  background: linear-gradient(180deg, #0039D2 0%, #00030A 125.13%);
+}
 
 body {
   min-height: 100vh;

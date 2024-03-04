@@ -1,5 +1,36 @@
 <script setup>
+import axios from 'axios'
 import { RouterLink, RouterView } from 'vue-router'
+import { store } from './store.js'
+
+var tournamentChampions = {}
+var tournamentAcademy = {}
+axios.get('https://qclservices.azurewebsites.net/tournament/get/7205060').then(response => {
+  tournamentChampions = response.data
+  axios.get('https://qclservices.azurewebsites.net/tournament/get/7205065').then(response => {
+    tournamentAcademy = response.data
+
+    var franchises = tournamentChampions.franchises
+
+    for (let i = 0; i < tournamentChampions.franchises.length; i++) {
+      tournamentChampions.franchises[i].teams.push(tournamentAcademy.franchises[i].teams[0])
+    }
+
+    franchises.forEach(f => {
+      f.teams.forEach(t => {
+        var opgg = ""
+        t.players.forEach(p => {
+          opgg += (p.opgg.split(',')[0] + ',')
+        })
+        t.opgg = opgg
+      })
+    });
+
+    store.franchises = franchises;
+  })
+})
+
+
 </script>
 
 <template>
@@ -8,12 +39,13 @@ import { RouterLink, RouterView } from 'vue-router'
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Play&display=swap" rel="stylesheet"> 
-    <a class="logo">QCL</a>
+    <a class="logo" href="/">QCL</a>
     <nav>
-      <RouterLink to="/">Acceuil</RouterLink>
+      <RouterLink to="/">Accueil</RouterLink>
       <RouterLink to="/franchises">Franchises</RouterLink>
       <RouterLink to="/equipe">L'équipe</RouterLink>
       <RouterLink to="/horaire">Horaire</RouterLink>
+      <a target="_blank" href="https://docs.google.com/document/d/1b95o_t9F86vNiQu5PbFwKcCbBzM3ShHhJmUGjqoRlTs/edit?usp=sharing">Règlements</a>
       <RouterLink to="/stats">Statistiques</RouterLink>
     </nav>
   </header>
@@ -30,14 +62,14 @@ import { RouterLink, RouterView } from 'vue-router'
 
     <div class="row">
         <ul>
-          <li><a href="/">Acceuil</a></li>
+          <li><a href="/">Accueil</a></li>
           <li><a href="/franchises">Franchises</a></li>
-          <li><a href="#">L'équipe</a></li>
-          <li><a href="#">Horaire</a></li>
-          <li><a href="#">Statistiques</a></li>
+          <li><a href="/equipe">L'équipe</a></li>
+          <li><a href="/horaire">Horaire</a></li>
+          <li><a target="_blank" href="https://docs.google.com/document/d/1b95o_t9F86vNiQu5PbFwKcCbBzM3ShHhJmUGjqoRlTs/edit?usp=sharing">Règlements</a></li>
+          <li><a href="/stats">Statistiques</a></li>
         </ul>
     </div>
-
     <div class="row">
       QCL Copyright © 2024 Quebec Champions League - Tout droits réservés || Conçu par Anthony Dumulong
     </div>

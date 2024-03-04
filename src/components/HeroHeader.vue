@@ -1,16 +1,13 @@
 <script setup>
-defineProps({
-  msg: {
-    type: String,
-    required: true
-  }
-})
 </script>
 
 <template>
   <div class="greetings">
     <img class="title" src="./../assets/qcl.png" />
     <h1>QUEBEC CHAMPIONS LEAGUE</h1>
+    <div id="arrow" class="arrow bounce">
+      <div class="img"></div>
+    </div>
   </div>
 </template>
 
@@ -51,15 +48,41 @@ h3{
   text-align: center;
   -webkit-text-stroke-width: 0.5px;
   -webkit-text-stroke-color: black;
-}
-
-.video{
-  text-align: center;
-  left: 0;
-}
-
-h3 {
   font-size: 1.2rem;
+}
+
+a { 
+  color: white; 
+  text-decoration: none; 
+}
+.arrow {
+  position: absolute;
+  left: 50%;
+  bottom: 50px;
+}
+.bounce {
+  -moz-animation: bounce 2s infinite;
+  -webkit-animation: bounce 2s infinite;
+  animation: bounce 2s infinite;
+}
+
+.img{
+  background-image: url('../assets/chevron.png');
+  width: 25px;
+  height: 15px;
+  background-size: cover;
+}
+
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-30px);
+  }
+  60% {
+    transform: translateY(-15px);
+  }
 }
 
 
