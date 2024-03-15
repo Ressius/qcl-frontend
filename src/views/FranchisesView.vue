@@ -11,7 +11,7 @@ import { store } from '../store.js'
       <div v-if="store.franchises.length === 0" class="lds-ring"><div></div><div></div><div></div><div></div></div>
       <div class="allfranchises">
         <div class="menufranchise" v-for="franchise in store.franchises">
-          <a :href="'#franchise-' + franchise.id">
+          <a class="btn" v-scroll-to="{ element: '#franchise-' + franchise.id, offset: -80}">
             <img :src="franchise.logo" />
           </a>
         </div>
@@ -23,6 +23,16 @@ import { store } from '../store.js'
           </div>
           <div class="contenttext">
             <h3>{{ franchise.name }}</h3>
+          </div>
+          <div class="staff">
+            <div class="st">
+              <font-awesome-icon :icon="['fas', 'user-tie']" />
+              {{ franchise.staff[0].name }}
+            </div>
+            <div class="st">
+              <font-awesome-icon :icon="['fas', 'chalkboard-user']" />
+              {{ franchise.staff[1].name }}
+            </div>
           </div>
           <div v-for="team in franchise.teams" class="team">
             <a target="_blank" :href="'https://www.op.gg/multisearch/na?summoners=' + encodeURIComponent(team.opgg)" class="tname">{{ team.name }}</a>
@@ -40,6 +50,27 @@ import { store } from '../store.js'
 </template>
 
 <style scoped>
+
+.btn{
+  cursor: pointer;
+}
+.staff{
+  font-size: 20px;
+  font-family: "GeneralSans";
+  color: white;
+  display: flex;
+  margin-left: 30px;
+  padding-top: 15px;
+}
+
+.st{
+  margin-right: 40px;
+}
+
+.staff svg{
+  margin-right: 10px;
+  font-size: 35px;
+}
 
 .title{
   padding-top: 60px;

@@ -5,6 +5,15 @@ import { store } from './store.js'
 
 var tournamentChampions = {}
 var tournamentAcademy = {}
+
+axios.get('https://qclservices.azurewebsites.net/tournament/standings/7205060').then(response => {
+  store.standingsChampions = response.data
+})
+
+axios.get('https://qclservices.azurewebsites.net/tournament/standings/7205065').then(response => {
+  store.standingsAcademy = response.data
+})
+
 axios.get('https://qclservices.azurewebsites.net/tournament/get/7205060').then(response => {
   tournamentChampions = response.data
   axios.get('https://qclservices.azurewebsites.net/tournament/get/7205065').then(response => {
@@ -39,16 +48,23 @@ axios.get('https://qclservices.azurewebsites.net/tournament/get/7205060').then(r
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Play&display=swap" rel="stylesheet"> 
-    <a class="logo" href="/">QCL</a>
-    <nav>
-      <RouterLink to="/">Accueil</RouterLink>
-      <RouterLink to="/franchises">Franchises</RouterLink>
-      <RouterLink to="/equipe">L'équipe</RouterLink>
-      <RouterLink to="/horaire">Horaire</RouterLink>
-      <a target="_blank" href="https://docs.google.com/document/d/1b95o_t9F86vNiQu5PbFwKcCbBzM3ShHhJmUGjqoRlTs/edit?usp=sharing">Règlements</a>
-      <RouterLink to="/stats">Statistiques</RouterLink>
-    </nav>
+    <div class="nav-desktop">
+      <a class="logo" href="/">QCL</a>
+      <nav class="nav1">
+        <RouterLink to="/">Accueil</RouterLink>
+        <RouterLink to="/franchises">Franchises</RouterLink>
+        <RouterLink to="/equipe">L'équipe</RouterLink>
+        <RouterLink to="/horaire">Horaire</RouterLink>
+        <RouterLink to="/classement">Classement</RouterLink>
+        <a target="_blank" href="https://docs.google.com/document/d/1b95o_t9F86vNiQu5PbFwKcCbBzM3ShHhJmUGjqoRlTs/edit?usp=sharing">Règlements</a>
+        <RouterLink to="/stats">Statistiques</RouterLink>
+      </nav>
+    </div>
   </header>
+
+  <a target="_blank" class="mobile bars">
+    <font-awesome-icon :icon="['fas', 'bars']" />
+  </a>
 
   <RouterView />
   <footer>
@@ -66,6 +82,7 @@ axios.get('https://qclservices.azurewebsites.net/tournament/get/7205060').then(r
           <li><a href="/franchises">Franchises</a></li>
           <li><a href="/equipe">L'équipe</a></li>
           <li><a href="/horaire">Horaire</a></li>
+          <li><a href="/classement">Classement</a></li>
           <li><a target="_blank" href="https://docs.google.com/document/d/1b95o_t9F86vNiQu5PbFwKcCbBzM3ShHhJmUGjqoRlTs/edit?usp=sharing">Règlements</a></li>
           <li><a href="/stats">Statistiques</a></li>
         </ul>
@@ -78,6 +95,18 @@ axios.get('https://qclservices.azurewebsites.net/tournament/get/7205060').then(r
 </template>
 
 <style scoped>
+
+.nav-mobile, .mobile{
+  display: none;
+}
+
+.bars{
+  z-index: 10;
+  font-size: 35px;
+  margin: 40px;
+  position: absolute;
+}
+
 header {
   z-index: 10;
   position: fixed;
@@ -103,7 +132,11 @@ header {
   top: 80px;
 }
 
-nav {
+.nav2{
+  display: none;
+}
+
+.nav1 {
   border-left: 1px solid white;
   display: block;
   font-size: 18px;
@@ -184,19 +217,16 @@ margin:0% 1%;
   color: black;
 }
 
-@media (max-width:720px){
-.footer{
-text-align:left;
-padding:5%;
-}
-.footer .row ul li{
-display:block;
-margin:10px 0px;
-text-align:left;
-}
-.footer .row a i{
-margin:0% 3%;
-}
+@media (max-width:1000px){
+  header {
+    height: 0;
+  }
+  .mobile{
+    display: flex;
+  }
+  .nav-desktop{
+    display: none;
+  }
 }
 
 </style>

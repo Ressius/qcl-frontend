@@ -3,6 +3,9 @@ import HomeView from '../views/HomeView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
+  scrollBehavior(to, from, savedPosition) {
+    return { top: 0 }
+  },
   routes: [
     {
       path: '/',
@@ -25,9 +28,14 @@ const router = createRouter({
       component: () => import('../views/FranchisesView.vue')
     },
     { 
+      path: '/classement', 
+      name: 'standings',
+      component: () => import('../views/StandingsView.vue')
+    },
+    { 
       path: '/:pathMatch(.*)*', 
       component: () => import('../views/NotFoundView.vue')
-    }
+    },
   ]
 })
 

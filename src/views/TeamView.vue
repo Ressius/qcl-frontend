@@ -57,6 +57,7 @@ import SmallHeroHeader from '../components/SmallHeroHeader.vue'
 }
 
 .block{
+  margin: 0 50px;
   width: 400px;
   padding-bottom: 60px;
 }

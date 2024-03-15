@@ -35,6 +35,8 @@ h1 {
   background-image: url('./../assets/img/backhome.png');
   padding-bottom: 15vh;
   background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-size: 100%;
   position: relative;
 }
 
@@ -63,6 +65,14 @@ h3{
   height: 10vh;
   margin-top: -30vh;
   width: 100%;
+}
+
+@media (max-width:1000px){
+  .greetings{
+    background-repeat: repeat;
+    background-size: auto;
+    background-position: center;
+  }
 }
 
 </style>
