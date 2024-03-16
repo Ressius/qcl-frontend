@@ -51,7 +51,6 @@ axios.get('https://qclservices.azurewebsites.net/tournament/get/7205060').then(r
     <div class="nav-desktop">
       <a class="logo" href="/">QCL</a>
       <nav class="nav1">
-        <RouterLink to="/">Accueil</RouterLink>
         <RouterLink to="/franchises">Franchises</RouterLink>
         <RouterLink to="/equipe">L'équipe</RouterLink>
         <RouterLink to="/horaire">Horaire</RouterLink>
