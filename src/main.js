@@ -13,9 +13,11 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
 /* import specific icons */
 import { faChalkboardUser, faUserTie, faBars } from "@fortawesome/free-solid-svg-icons";
+import { faXTwitter, faDiscord, faYoutube, faTwitch } from "@fortawesome/free-brands-svg-icons";
+
 
 /* add icons to the library */
-library.add(faChalkboardUser, faUserTie, faBars)
+library.add(faChalkboardUser, faUserTie, faBars, faXTwitter, faDiscord, faYoutube, faTwitch)
 
 const app = createApp(App)
 
