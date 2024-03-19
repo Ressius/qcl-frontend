@@ -41,14 +41,14 @@ export default {
           <h2>Le Concept</h2>
           <p>La QCL est une ligue par système de repêchage du jeu League of Legends qui tente de reproduire le système des grandes ligues de sport comme la NHL. C'est-à-dire, les équipes repêchent sur plusieurs rondes les meilleurs joueurs disponibles dans la banque du Québec dans le but de former la meilleure Organisation possible et de remporter le championnat. Aucune équipe pré-faite et on recommence les équipes à chaque saison !</p>
         </div>
-        <div style="margin-top:-100px;padding-top: 60px;" class="img imgright" id="img">
-          <img src="./../assets/img/5.png">
-        </div>
+          <div class="img-container">
+            <img src="./../assets/img/5.png">
+          </div>
       </div>
-      <div class="block">
-        <div class="img imgleft">
-          <img src="./../assets/img/1.png">
-        </div>
+      <div class="block flex-column-inverse">
+          <div class="img-container">
+            <img src="./../assets/img/1.png">
+          </div>
         <div class="text">
           <h2>Les Franchises</h2>
           <p>Chaque franchise a une équipe dans la division Champions avec les 5 joueurs principaux et une équipe dans la ligue Académie avec 5 joueurs supplémentaires qui compétitionnent pour monter vers l’équipe principale. Cela ouvre la porte à 80 joueurs ! Chaque équipe engage un entraîneur avec une expérience compétitive minimale et une expérience adéquate pour entourer les joueurs et les aider dans leur parcours d’amélioration.</p>
@@ -63,9 +63,9 @@ Nous croyons que avoir la meilleure compétition possible par le système de rep
 Avec ce haut calibre et le spectacle entourant la draft et les diverses histoires, cette ligue devient rapidement un beau spectacle!
 </p>
         </div>
-        <div style="padding-top:150px" class="img imgright">
-          <img src="./../assets/img/backhome.png">
-        </div>
+          <div class="img-container">
+            <img src="./../assets/img/backhome.png">
+          </div>
       </div>
       <Schedule />
     </div>
@@ -79,46 +79,56 @@ Avec ce haut calibre et le spectacle entourant la draft et les diverses histoire
   margin-top: -30vh;
   width: 100%;
 }
-.block{
-  padding: 5vw 15vw;
-  display: flex;
+
+body {
+  width:100vw;
+  overflow-x:hidden;
 }
+
+.block {
+  padding: 0 15vw;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+}
+
+@media (max-width: 1160px) {
+  .block {
+    flex-direction: column;
+  }
+  .flex-column-inverse {
+    flex-direction: column-reverse;
+}
+}
+
+.block > * {
+  padding: 20px;
+  flex: 1;
+}
+
+.img-container {
+  display:flex;
+  align-items: center;
+  justify-content: center;
+}
+.block img{
+  width: 100%;
+  border-radius: 20px;
+}
+.block .text{
+  color: white;
+  font-size: 16px;
+  align-self: flex-start;
+}
+
 .block h2{
   font-size: 40px;
   margin-bottom: 30px;
   font-family: GeneralSansMedium;
 }
-.block .text{
-  display: block;
-  width: 40%;
-  margin-top: 20px;
-}
-
 .text p{
   font-family: 'GeneralSansLight';
   font-size: 20px;
-}
-
-.block .img{
-  display: block;
-  width: 60%;
-}
-
-.img img{
-  width: 100%;
-  border-radius: 20px;
-}
-
-.imgleft{
-  margin-right: 5%;
-}
-
-.imgright{
-  margin-left: 5%;
-}
-
-.block .text{
-  color: white;
-  font-size: 16px;
 }
 </style>
