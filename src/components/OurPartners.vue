@@ -29,7 +29,8 @@ h2 {
 
 .logos img{
   height: 20vh;
-  margin: 2vw;
+  padding: 2vw;
+  max-width: 100%;
 }
 
 
