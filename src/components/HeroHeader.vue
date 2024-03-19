@@ -14,18 +14,25 @@
 <style scoped>
 h1 {
   color: white;
-  font-size: 4.5rem;
+  font-size: 14vw;
   position: relative;
   top: 0;
   font-family: "GeneralSansBold";
   text-align: center;
-  width: 60%;
   line-height: 1.1;
   margin: auto;
   -webkit-text-stroke: 2px black;
+  padding: 0 10px;
+}
+
+@media (min-width: 500px) {
+  h1 {
+     font-size: 4.5rem;
+    }
 }
 
 .greetings{
+  width:100%;
   padding-top: 100px;
   background-image: url('./../assets/img/homebaron.png');
   padding-bottom: 35vh;
@@ -38,7 +45,8 @@ h1 {
   margin-right: auto;
   position: relative;
   top: 0;
-  width: 50vh;
+  width: 95vw;
+  max-width: 50vh;
 }
 
 h3{
