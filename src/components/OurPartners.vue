@@ -9,6 +9,7 @@
       <img src="../assets/img/salvatore.png" />
       <img src="../assets/img/vortex.png" />
       <img src="../assets/img/adt.png" />
+      <img src ="../assets/img/votrepoutine.png">
     </div>
   </div>
 </template>

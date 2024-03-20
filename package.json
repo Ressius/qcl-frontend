@@ -6,7 +6,7 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "cname": "cd dist && echo dist\\qcligue.ca > CNAME",
+    "cname": "cd dist && echo qcligue.ca > CNAME",
     "deploy": "vite build && copy dist\\index.html dist\\404.html"
   },
   "dependencies": {

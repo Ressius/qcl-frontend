@@ -26,7 +26,7 @@
         </div>
         <div class="separator"></div>
         <div class="team team2">
-          <img src="https://cdn.discordapp.com/attachments/1038428294040780810/1213929506335621250/aot.png?ex=65f742f4&is=65e4cdf4&hm=68eef281123dfb4b5c786369a4f6bdabafda05bb068e9297cfd693c7f7b1381c&" />
+          <img src="../assets/teams//aot.png" />
           <p>Anges du Saguenay</p>
         </div>
         <div class="time">
