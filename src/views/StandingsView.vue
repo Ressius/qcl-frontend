@@ -42,7 +42,9 @@ import { store } from '../store.js'
 
 <style scoped>
 .pts{
-  width: 60px;
+  text-align: right;
+  margin: 0 20px; 
+  min-width:50px;
 }
 
 h3{
@@ -63,11 +65,14 @@ h3{
   width: 90vw;
   margin: auto;
   display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
   justify-content: space-evenly;
   padding-bottom: 100px;
 }
 
 .name{
+  width: 100%;
   display: flex;
   align-items: center;
   min-width: 35vw;
@@ -75,13 +80,14 @@ h3{
   border-radius: 0 30px 30px 0;
 }
 
+.name > p {
+  flex-grow: 1;
+}
+
+
 .name:hover{
   transition: 0.5s;
   background-color: black;
-}
-
-p{
-  width: 90%;
 }
 
 .number{
@@ -106,7 +112,8 @@ p{
 }
 
 .menufranchise img{
-  height: 70px;
+  max-height: 70px;
+  max-width: 70px;
   margin: 10px 20px;
 }
 .stadings h3{
