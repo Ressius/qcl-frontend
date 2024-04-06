@@ -75,11 +75,14 @@ h3{
   width: 90vw;
   margin: auto;
   display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
   justify-content: space-evenly;
   padding-bottom: 100px;
 }
 
 .name{
+  width: 100%;
   display: flex;
   align-items: center;
   min-width: 35vw;
@@ -145,7 +148,8 @@ p{
 }
 
 .menufranchise img{
-  height: 70px;
+  max-height: 70px;
+  max-width: 70px;
   margin: 10px 20px;
 }
 .stadings h3{

@@ -23,9 +23,9 @@ h1 {
   font-family: "GeneralSansBold";
   text-align: center;
   text-transform: uppercase;
-  width: 40%;
+  width: 100%;
+  padding: 0 20px;
   line-height: 1.1;
-  margin: auto;
   margin-top: 80px;
   -webkit-text-stroke: 2px black;
 }
@@ -67,12 +67,14 @@ h3{
   width: 100%;
 }
 
-@media (max-width:1000px){
-  .greetings{
-    background-repeat: repeat;
-    background-size: auto;
-    background-position: center;
+@media (max-width: 600px) {
+  h1 {
+    font-size: 2rem;
+    margin-top: 30px;
+  }
+
+  .title {
+    width: 90%;
   }
 }
-
 </style>
