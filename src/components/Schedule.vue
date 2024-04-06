@@ -164,7 +164,6 @@ h2 {
 }
 
 .team img {
-  width: 50px;
   height: 50px;
   align-self: center;
   justify-content: center;
@@ -195,7 +194,7 @@ h2 {
   transform: translate(0px, -12px) rotate(110deg) ;
   float: right;
   margin-left: -5px;
-  margin-right: 40px;
+  margin-right: 25px;
 }
 
 @media (max-width: 1100px){

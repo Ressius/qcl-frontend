@@ -15,15 +15,17 @@ export default {
   },
   methods: {
     handleScroll (event) {
-      var height = 200 - (window.scrollY/8)
+      var height = 50 - (window.scrollY/20)
       var arrow = document.getElementById("arrow");
       
       if(arrow != null){
         arrow.remove();
       }
       let images = document.getElementsByClassName("img");
-      for (var i = 0; i < images.length; i++) {
-        images[i].style.transform = "translate(0," + height + "px)";
+      if(window.innerWidth > 1000){
+        for (var i = 0; i < images.length; i++) {
+          images[i].style.transform = "translate(0," + height + "px)";
+        }
       }
     }
   }
@@ -41,12 +43,12 @@ export default {
           <h2>Le Concept</h2>
           <p>La QCL est une ligue par système de repêchage du jeu League of Legends qui tente de reproduire le système des grandes ligues de sport comme la NHL. C'est-à-dire, les équipes repêchent sur plusieurs rondes les meilleurs joueurs disponibles dans la banque du Québec dans le but de former la meilleure Organisation possible et de remporter le championnat. Aucune équipe pré-faite et on recommence les équipes à chaque saison !</p>
         </div>
-          <div class="img-container">
+          <div class="img img-container">
             <img src="./../assets/img/5.png">
           </div>
       </div>
       <div class="block flex-column-inverse">
-          <div class="img-container">
+          <div class="img img-container">
             <img src="./../assets/img/1.png">
           </div>
         <div class="text">
@@ -63,7 +65,7 @@ Nous croyons que avoir la meilleure compétition possible par le système de rep
 Avec ce haut calibre et le spectacle entourant la draft et les diverses histoires, cette ligue devient rapidement un beau spectacle!
 </p>
         </div>
-          <div class="img-container">
+          <div class="img img-container">
             <img src="./../assets/img/backhome.png">
           </div>
       </div>
@@ -86,7 +88,7 @@ body {
 }
 
 .block {
-  padding: 0 15vw;
+  padding: 30px 15vw;
   width: 100%;
   display: flex;
   justify-content: space-between;
