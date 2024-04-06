@@ -97,10 +97,10 @@ import { store } from '../store.js'
   display:flex;
   justify-content: center;
   align-items: center;
-  width: 100px;
+  height: 100px;
 }
 .menufranchise img{
-  max-width: 100%;
+  max-height: 100%;
   padding:10px;
 }
 
@@ -120,7 +120,6 @@ import { store } from '../store.js'
 .menufranchise{
   border-radius: 30px;
   display: flex;
-  width: 100px;
 }
 .menufranchise:hover{
   background-color: rgb(1, 14, 48);
@@ -188,7 +187,10 @@ import { store } from '../store.js'
 
 .team > a {
   writing-mode: vertical-rl;
-  text-orientation: mixed;
+  text-orientation: upright;
+  font-family: GeneralSansBold;
+  text-transform: uppercase;
+  line-height: 1.5;
   height: 25%;
   width: 100%;
   margin: auto;

@@ -67,7 +67,15 @@ h3{
   width: 100%;
 }
 
+@media (max-width: 1000px){
+  .greetings{
+    background-size: cover;
+    background-position: center;
+  }
+}
+
 @media (max-width: 600px) {
+
   h1 {
     font-size: 2rem;
     margin-top: 30px;

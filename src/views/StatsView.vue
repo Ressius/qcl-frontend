@@ -125,9 +125,9 @@ const formatPercentage = (value) => {
                 {{ data.differentChampionsPlayed }}
             </template>
         </Column>
-        <Column sortable field="visionAvg" header="Vision" style="min-width: 3rem;text-align: center;">
+        <Column sortable field="visionAvg" header="VS/Min" style="min-width: 3rem;text-align: center;">
             <template #body="{ data }">
-                {{ data.visionAvg + "/game" }}
+                {{ data.visionAvg  }}
             </template>
         </Column>
       </DataTable>
