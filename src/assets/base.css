@@ -98,7 +98,7 @@ body {
   font-family:
     'GeneralSans',
     'Helvetica Neue',
-    sans-serif;
+    sans-serif !important;
   font-size: 15px;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;

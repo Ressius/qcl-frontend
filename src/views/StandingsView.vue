@@ -18,7 +18,10 @@ import { store } from '../store.js'
           <div class="name">
             <img :src="team.teamLogo" />
             <p>{{ team.teamName }}</p>
-            <div class="pts">{{ team.points }} pts</div>
+            <div class="results"><div class="title">Résultats</div><br/>{{ team.resultsWins }}-{{ team.resultsLoses }}</div>
+            <div class="games"><div class="title">V/D</div><br/>{{ team.victories }}/{{ team.defeats }}</div>
+            <div class="points"><div class="title">Points</div><br/>{{ team.points }}</div>
+            <div class="pts">{{ team.points }} <div class="pts2">pts</div></div>
           </div>
         </div>
       </div>
@@ -31,7 +34,10 @@ import { store } from '../store.js'
           <div class="name">
             <img :src="team.teamLogo" />
             <p>{{ team.teamName }}</p>
-            <div class="pts">{{ team.points }} pts</div>
+            <div class="results"><div class="title">Résultats</div><br/>{{ team.resultsWins }}-{{ team.resultsLoses }}</div>
+            <div class="games"><div class="title">V/D</div><br/>{{ team.victories }}/{{ team.defeats }}</div>
+            <div class="points"><div class="title">Points</div><br/>{{ team.points }}</div>
+            <div class="pts">{{ team.points }} <div class="pts2">pts</div></div>
           </div>
         </div>
       </div>
@@ -42,7 +48,13 @@ import { store } from '../store.js'
 
 <style scoped>
 .pts{
-  width: 60px;
+  min-width: 60px;
+  font-size: 25px;
+}
+.pts2{
+  font-size: 15px;
+  opacity: 0.5;
+  margin-top: 5px;
 }
 
 h3{
@@ -73,11 +85,38 @@ h3{
   min-width: 35vw;
   cursor: pointer;
   border-radius: 0 30px 30px 0;
+  line-height: 15px;
+}
+
+.title{
+  font-size: 15px;
+  opacity: 0.5;
+}
+
+.results, .games, .points{
+  display: none;
+  text-align: center;
+  padding: 0 10px;
+  font-size: 25px;
+}
+
+.points{
+  margin-right: 15px;
+}
+
+.name:hover .results, .name:hover .games, .name:hover .points{
+  display: block;
+  animation: fadeIn 0.5s;
+}
+
+.name:hover .pts{
+  display: none;
 }
 
 .name:hover{
   transition: 0.5s;
-  background-color: black;
+  background-color: white;
+  color: black;
 }
 
 p{
@@ -112,6 +151,11 @@ p{
 .stadings h3{
   font-size: 30px;
   font-family: GeneralSansMedium;
+}
+
+@keyframes fadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
 }
 
 </style>

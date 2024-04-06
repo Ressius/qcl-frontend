@@ -9,6 +9,9 @@ export default defineConfig({
   plugins: [
     vue(),
   ],
+  optimizeDeps : {
+      include : ['@bryntum/grid', '@bryntum/grid-trial-lib', '@bryntum/grid-vue-3']
+  },
   resolve: {
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url))

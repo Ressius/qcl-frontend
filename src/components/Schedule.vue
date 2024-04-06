@@ -26,7 +26,7 @@
         </div>
         <div class="separator"></div>
         <div class="team team2">
-          <img src="../assets/teams//aot.png" />
+          <img src="../assets/teams/aot.png" />
           <p>Anges du Saguenay</p>
         </div>
         <div class="time">
@@ -105,7 +105,7 @@
           <p>Apex de Chambly</p>
         </div>
         <div class="time">
-          <p>Dimanche 14 mars 2024 - 19h30</p>
+          <p>Dimanche 14 avril 2024 - 19h30</p>
         </div>
         <div class="watch"></div>
       </div>

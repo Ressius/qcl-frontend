@@ -10,33 +10,51 @@ const router = createRouter({
     {
       path: '/',
       name: 'home',
+      meta: { title: 'QCL - Acceuil' },
       component: HomeView
     },
     {
       path: '/horaire',
       name: 'schedule',
+      meta: { title: 'QCL - Horaire' },
       component: () => import('../views/ScheduleView.vue')
     },
     {
       path: '/equipe',
       name: 'equipe',
+      meta: { title: 'QCL - Équipe' },
       component: () => import('../views/TeamView.vue')
     },
     {
       path: '/franchises',
       name: 'franchises',
+      meta: { title: 'QCL - Franchises' },
       component: () => import('../views/FranchisesView.vue')
     },
     { 
       path: '/classement', 
       name: 'standings',
+      meta: { title: 'QCL - Classement' },
       component: () => import('../views/StandingsView.vue')
     },
     { 
+      path: '/stats', 
+      name: 'stats',
+      meta: { title: 'QCL - Stats' },
+      component: () => import('../views/StatsView.vue')
+    },
+    { 
+      meta: { title: 'QCL - 404' },
       path: '/:pathMatch(.*)*', 
       component: () => import('../views/NotFoundView.vue')
     },
   ]
 })
+
+router.beforeEach((to, from, next) => {
+  console.log(to);
+  document.title = to.meta.title;
+  next();
+});
 
 export default router
