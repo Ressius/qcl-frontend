@@ -18,11 +18,9 @@ import { store } from '../store.js'
       </div>
       <div class="title">
         <div v-for="franchise in store.franchises" :id="'franchise-' + franchise.id" class="franchise">
-          <div class="img">
-            <img :src="franchise.logo">
-          </div>
-          <div class="contenttext">
-            <h3>{{ franchise.name }}</h3>
+          <div class="franchises-details">
+              <img :src="franchise.logo">
+              <h3>{{ franchise.name }}</h3>
           </div>
           <div class="staff">
             <div class="st">
@@ -35,7 +33,9 @@ import { store } from '../store.js'
             </div>
           </div>
           <div v-for="team in franchise.teams" class="team">
-            <a target="_blank" :href="'https://www.op.gg/multisearch/na?summoners=' + encodeURIComponent(team.opgg)" class="tname">{{ team.name }}</a>
+            <a target="_blank" :href="'https://www.op.gg/multisearch/na?summoners=' + encodeURIComponent(team.opgg)" class="tname">
+              <p>{{ team.name }}</p>
+            </a>
             <div class="players">
               <div v-for="player in team.players" class="player">
                 <img class="playericon" :src="'/icons/' + player.role + '.svg'" />
@@ -59,13 +59,14 @@ import { store } from '../store.js'
   font-family: "GeneralSans";
   color: white;
   display: flex;
-  margin-left: 30px;
-  padding-top: 15px;
+  justify-content: start;
+  margin-left: 20px;
+  flex-wrap: wrap;
+  margin-top: 20px;
+  column-gap: 20px;
+  row-gap: 10px;
 }
 
-.st{
-  margin-right: 40px;
-}
 
 .staff svg{
   margin-right: 10px;
@@ -83,35 +84,43 @@ import { store } from '../store.js'
 
 .allfranchises{
   display: flex;
+  flex-wrap: wrap;
   width: 80vw;
   margin: auto;
   background-color: rgba(0,0,0,0.5);
   border-radius: 50px;
-  padding: 20px 30px;
+  padding: 10px;
   justify-content: space-evenly;
 }
 
+.menufranchise > a {
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  width: 100px;
+}
 .menufranchise img{
-  height: 90px;
-  margin: auto;
-  bottom: 0;
+  max-width: 100%;
+  padding:10px;
 }
 
 .players{
   display: flex;
   justify-content: space-evenly;
+  flex-wrap: wrap;
   width: 100%;
+  gap: 10px;
 }
 .player{
   display: flex;
-  min-width: 100px;
+  width: 200px;
+
 }
 
 .menufranchise{
   border-radius: 30px;
   display: flex;
-  height: 100px;
-  padding: 5px 20px 15px 20px;
+  width: 100px;
 }
 .menufranchise:hover{
   background-color: rgb(1, 14, 48);
@@ -152,46 +161,80 @@ import { store } from '../store.js'
   padding: 20px;
   border-radius: 40px;
   margin: 10px 0;
+  gap: 20px;
+}
+
+.team > a {
+  display: flex;
+  align-items: center;
+}
+.team > a > p {
+  margin: auto;
+  font-weight: bold;
 }
 
 .franchise{
   padding: 50px 0;
-  width: 80vw;
+  width: 90vw;
   margin: auto;
-  transition:0.5s;
   scroll-margin-top: 50px;
 }
 
-.contenttext{
-  padding: 30px;
-  padding-left: 100px;
-  color: white;
+@media (max-width: 450px) {
+
+.franchise{
+  width: 90vw;
 }
 
-.img {
-  float: left;
-}
-
-.img img{
-  height: 100px;
+.team > a {
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  height: 25%;
+  width: 100%;
   margin: auto;
-  transition:0.5s;
 }
+
+.staff {
+  justify-content: space-around;
+}
+
+}
+
+.franchises-details{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  width: 100%;
+}
+
+.franchises-details > * {
+  margin: auto;
+}
+
+.franchises-details h3 {
+  width: 600px;
+  text-align: center;
+}
+
+.franchises-details img{
+  width: 100px;
+}
+.franchises-details h3 {
+  flex-grow:1;
+  text-align: center;
+  color: white;
+  margin-left: 20px;
+}
+
 
 h3 {
   font-family: "GeneralSansSemiBold";
   font-size: 1.8rem;
   position: inherit;
-  margin-left: 30px;
-}
-.content h3 {
-  position: inherit;
-  margin-bottom: 15px;
 }
 
-@media (min-width: 1024px) {
-  .title h1,
-  .title h3 {
+@media (min-width: 822px) {
+  .franchises-details h3 {
     text-align: left;
   }
 }
