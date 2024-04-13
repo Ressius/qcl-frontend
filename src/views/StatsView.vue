@@ -64,7 +64,7 @@ const formatPercentage = (value) => {
               <img class="logo-franchise" :src="data.franchiseUrl" />
             </template>
         </Column>
-        <Column :showFilterMenu="false" :showClearButton="false" sortable field="playerIGN" header="IGN" style="min-width: 6rem">
+        <Column :showFilterMenu="false" :showClearButton="false" sortable field="playerIGN" header="IGN" style="min-width: 4rem">
             <template #body="{ data }">
                 {{ data.playerIGN }}
             </template>
@@ -97,17 +97,22 @@ const formatPercentage = (value) => {
         </Column>
         <Column sortable field="totalKills" header="Kills" style="min-width: 5rem">
             <template #body="{ data }">
-                {{ data.totalKills + " (" + data.killsAvg + "/game)" }}
+                {{ data.totalKills + " (" + data.killsAvg + "/g)" }}
             </template>
         </Column>
         <Column sortable field="totalDeaths" header="Deaths" style="min-width: 5rem;">
             <template #body="{ data }">
-                {{ data.totalDeaths + " (" + data.deathsAvg + "/game)" }}
+                {{ data.totalDeaths + " (" + data.deathsAvg + "/g)" }}
             </template>
         </Column>
         <Column sortable field="totalAssists" header="Assists" style="min-width: 5rem;">
             <template #body="{ data }">
-                {{ data.totalAssists + " (" + data.assistsAvg + "/game)" }}
+                {{ data.totalAssists + " (" + data.assistsAvg + "/g)" }}
+            </template>
+        </Column>
+        <Column sortable field="totalDamageDealtToBuildings" header="DMG Buildings" style="min-width: 3rem;text-align: center;">
+            <template #body="{ data }">
+                {{ data.totalDamageDealtToBuildings.toLocaleString() + ' (' + data.dmgBuildingsAvg.toLocaleString() + '/g)'  }}
             </template>
         </Column>
         <Column sortable field="goldPerMinute" header="Gold/Min" style="min-width: 3rem;text-align: center;">
@@ -120,9 +125,16 @@ const formatPercentage = (value) => {
                 {{ data.csMin }}
             </template>
         </Column>
-        <Column sortable field="differentChampionsPlayed" header="Diff Champ" style="min-width: 3rem;text-align: center;">
+        <Column sortable field="dmgPerMinute" header="DMG/Min" style="min-width: 3rem;text-align: center;">
             <template #body="{ data }">
+                {{ data.dmgPerMinute  }}
+            </template>
+        </Column>
+        <Column sortable field="differentChampionsPlayed" header="Diff Champ" style="min-width: 3rem;text-align: center;">
+            <template  #body="{ data }">
+              <div style="cursor: default;" v-tooltip.top="data.champions">
                 {{ data.differentChampionsPlayed }}
+              </div>
             </template>
         </Column>
         <Column sortable field="visionAvg" header="VS/Min" style="min-width: 3rem;text-align: center;">

@@ -7,6 +7,7 @@ import VueScrollTo from 'vue-scrollto'
 import PrimeVue from 'primevue/config'
 import 'primeicons/primeicons.css'
 import 'primevue/resources/themes/mdc-dark-indigo/theme.css'
+import Tooltip from 'primevue/tooltip';
 
 /* import the fontawesome core */
 import { library } from '@fortawesome/fontawesome-svg-core'
@@ -26,6 +27,7 @@ const app = createApp(App)
 
 app.component('font-awesome-icon', FontAwesomeIcon)
 app.use(router)
+app.directive('tooltip', Tooltip)
 app.use(PrimeVue)
 app.use(VueScrollTo)
 

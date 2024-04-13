@@ -10,7 +10,7 @@ const router = createRouter({
     {
       path: '/',
       name: 'home',
-      meta: { title: 'QCL - Acceuil' },
+      meta: { title: 'QCL - Accueil' },
       component: HomeView
     },
     {
@@ -52,7 +52,6 @@ const router = createRouter({
 })
 
 router.beforeEach((to, from, next) => {
-  console.log(to);
   document.title = to.meta.title;
   next();
 });
