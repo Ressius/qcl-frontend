@@ -7,6 +7,16 @@ import { store } from '../store.js'
   <main>
     <SmallHeroHeader msg="Classement de la saison courante" />
     <div class="content">
+      <div class="brackets">
+        <div class="br">
+          <h3>Bracket Champions</h3>
+          <img class="bracket" src="../assets/img/BracketChampions.png" />
+        </div>
+        <div class="br">
+          <h3>Bracket Académie</h3>
+          <img class="bracket" src="../assets/img/BracketAcad.png" />
+        </div>
+      </div>
       <div v-if="store.standingsChampions.length === 0" class="lds-ring"><div></div><div></div><div></div><div></div></div>
       <div class="allstandings">
         <div class="standings">
@@ -47,6 +57,18 @@ import { store } from '../store.js'
 </template>
 
 <style scoped>
+.brackets{
+  padding: 0 50px;
+  display: flex;
+  flex-wrap: wrap;
+}
+.br{
+  padding: 50px;
+  max-width: 50%;
+}
+.bracket{
+  width: 100%;
+}
 .pts{
   min-width: 60px;
   font-size: 25px;
@@ -156,6 +178,13 @@ p{
   font-size: 30px;
   font-family: GeneralSansMedium;
 }
+
+@media (max-width: 1160px) {
+  .br{
+    max-width: 100%;
+  }
+}
+
 
 @keyframes fadeIn {
   0% { opacity: 0; }

@@ -4,5 +4,8 @@ export const store = reactive({
   franchises: [],
   standingsChampions: [],
   standingsAcademy: [],
+  statsPlayoffs: [],
+  statsSeason: [],
+  statsTotal: [],
   stats: [],
 })

@@ -14,17 +14,37 @@ import Dropdown from 'primevue/dropdown';
 const loading = ref(true);
 
 onMounted(() => {
-  var options = {method: 'GET', url: 'https://qclservices.azurewebsites.net/stats/list', encoding:'latin1'};
-  if(store.stats.length === 0){
+  var options = {method: 'GET', url: 'https://qclservices.azurewebsites.net/stats/list/2', encoding:'latin1'};
+  if(store.statsSeason.length === 0){
     axios.request(options).then(response => {
-    store.stats = response.data;
-    loading.value = false;
+      store.statsSeason = response.data;
+      options.url = 'https://qclservices.azurewebsites.net/stats/list/1';
+      axios.request(options).then(response => {
+        store.statsPlayoffs = response.data;
+        store.statsTotal = store.statsSeason.concat(store.statsPlayoffs);
+        store.stats = store.statsTotal;
+        loading.value = false;
+      })
   })
   } else{
     loading.value = false;
   }
 
 });
+
+function changeScope() {
+  switch (selectedScope.value.code) {
+    case '1':
+      store.stats = store.statsTotal;
+      break;
+    case '2':
+      store.stats = store.statsSeason;
+      break;
+    case '3':
+      store.stats = store.statsPlayoffs;
+      break;
+  }
+}
 
 const filters = ref({
   global: { value: null, matchMode: FilterMatchMode.CONTAINS },
@@ -38,6 +58,13 @@ const divisions = ref([
   "Académie"
 ])
 
+const selectedScope = ref({ name: 'Toutes les statistiques', code: '1' });
+const scope = ref([
+    { name: 'Toutes les statistiques', code: '1' },
+    { name: 'Saison régulière', code: '2' },
+    { name: 'Séries éliminatoires', code: '3' },
+])
+
 const roles = ref([
   "top",
   "jg",
@@ -46,16 +73,16 @@ const roles = ref([
   "sup"
 ])
 
-const formatPercentage = (value) => {
-    return value + "%";
-};
-
 </script>
 
 <template>
   <main>
     <SmallHeroHeader msg="STATISTIQUES DES JOUEURS" />
     <div class="content">
+      <div class="header">
+        <h4>Portée: </h4>
+        <Dropdown v-model="selectedScope" :options="scope" :disabled="loading"  optionLabel="name" class="w-full md:w-14rem" @change="changeScope" style="min-width: 250px;" />
+      </div>
       <DataTable sortField="kda" :sortOrder="-1" :value="store.stats" v-model:filters="filters" paginator :rows="10" dataKey="playerIGN" filterDisplay="row" :loading="loading" tableStyle="min-width: 50rem;max-width:90vw;">
         <template #empty> Aucun joueur trouvé. </template>
         <template #loading> <h3>Chargement des statistiques</h3><div class="lds-ring"><div></div><div></div><div></div><div></div></div></template>
@@ -157,6 +184,17 @@ const formatPercentage = (value) => {
 </style>
 
 <style scoped>
+.header{
+  display: flex;
+  width: 100%;
+  padding: 20px;
+}
+
+.header h4{
+  font-size: 2em;
+  margin-right: 20px;
+}
+
 .lds-ring{
     position: absolute;
     top: 150px;
@@ -178,7 +216,6 @@ h3{
   margin: auto;
 }
 .content{
-  display: flex;
   color: white;
   padding: 50PX 5vw;
   justify-content: space-evenly;
