@@ -14,17 +14,12 @@ import Dropdown from 'primevue/dropdown';
 const loading = ref(true);
 
 onMounted(() => {
-  var options = {method: 'GET', url: 'https://qclservices.azurewebsites.net/stats/list/2', encoding:'latin1'};
+  var options = {method: 'GET', url: 'https://qclservices.azurewebsites.net/stats/list/3', encoding:'latin1'};
   if(store.statsSeason.length === 0){
     axios.request(options).then(response => {
-      store.statsSeason = response.data;
-      options.url = 'https://qclservices.azurewebsites.net/stats/list/1';
-      axios.request(options).then(response => {
-        store.statsPlayoffs = response.data;
-        store.statsTotal = store.statsSeason.concat(store.statsPlayoffs);
-        store.stats = store.statsTotal;
-        loading.value = false;
-      })
+      store.statsTotal = response.data;
+      store.stats = store.statsTotal;
+      loading.value = false;
   })
   } else{
     loading.value = false;
@@ -38,10 +33,30 @@ function changeScope() {
       store.stats = store.statsTotal;
       break;
     case '2':
-      store.stats = store.statsSeason;
+      if(store.statsSeason.length == 0){
+        var options = {method: 'GET', url: 'https://qclservices.azurewebsites.net/stats/list/2', encoding:'latin1'};
+        loading.value = true;
+        axios.request(options).then(response => {
+            store.statsSeason = response.data;
+            store.stats = store.statsSeason;
+            loading.value = false;
+        })
+      } else {
+        store.stats = store.statsSeason;
+      }
       break;
     case '3':
-      store.stats = store.statsPlayoffs;
+      if(store.statsPlayoffs.length == 0){
+        var options = {method: 'GET', url: 'https://qclservices.azurewebsites.net/stats/list/1', encoding:'latin1'};
+        loading.value = true;
+        axios.request(options).then(response => {
+            store.statsPlayoffs = response.data;
+            store.stats = store.statsPlayoffs;
+            loading.value = false;
+        })
+      } else {
+        store.stats = store.statsPlayoffs;
+      }
       break;
   }
 }

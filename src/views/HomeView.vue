@@ -98,6 +98,7 @@ body {
 @media (max-width: 1160px) {
   .block {
     flex-direction: column;
+    padding: 20px;
   }
   .flex-column-inverse {
     flex-direction: column-reverse;
@@ -106,7 +107,11 @@ body {
 
 .block > * {
   padding: 20px;
+  font-size: 10px;
   flex: 1;
+  @media (max-width: 1160px) {
+    padding: 8px 0;
+  }
 }
 
 .img-container {

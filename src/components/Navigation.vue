@@ -84,7 +84,10 @@ header {
   display: flex;
   align-items: center;
   padding-right: 40px;
-  padding-left: 80px
+  padding-left: 80px;
+  @media (max-width: 1000px) {
+    padding-left: 20px;
+  }
 }
 
 .branding .logo {
@@ -126,9 +129,9 @@ nav
     display: flex;
     align-items: center;
     position: absolute;
-    top:0;
-    right: 40px;
-    height: 100%;
+    top:10px;
+    right: 0;
+    height: 75%;
     color: white;
 
     svg {

@@ -26,7 +26,7 @@ import SmallHeroHeader from '../components/SmallHeroHeader.vue'
         <div class="block">
           <img src="../assets/crew/manu.png" />
           <h3>Manuel "kingpin1905" Roy-Boisvert</h3>
-          <p>Réalisateur et producteur, il s'occupe des diffusions Twitch et des aspects techniques qui les accompagnent. Il développe également des outils sur mesure pour la ligue.</p>
+          <p>Réalisateur, producteur et monteur video, il s'occupe des diffusions Twitch et des aspects techniques qui les accompagnent. Il développe également des outils sur mesure pour la ligue.</p>
         </div>
         <div class="block">
           <img src="../assets/crew/blake.png" />

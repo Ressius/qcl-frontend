@@ -27,7 +27,7 @@ import { store } from '../store.js'
           </div>
           <div class="name">
             <img :src="team.teamLogo" />
-            <p>{{ team.teamName }}</p>
+            <p class="team">{{ team.teamName }}</p>
             <div class="results"><div class="title">Résultats</div><br/>{{ team.resultsWins }}-{{ team.resultsLoses }}</div>
             <div class="games"><div class="title">V/D</div><br/>{{ team.victories }}/{{ team.defeats }}</div>
             <div class="points"><div class="title">Points</div><br/>{{ team.points }}</div>
@@ -43,7 +43,7 @@ import { store } from '../store.js'
           </div>
           <div class="name">
             <img :src="team.teamLogo" />
-            <p>{{ team.teamName }}</p>
+            <p class="team">{{ team.teamName }}</p>
             <div class="results"><div class="title">Résultats</div><br/>{{ team.resultsWins }}-{{ team.resultsLoses }}</div>
             <div class="games"><div class="title">V/D</div><br/>{{ team.victories }}/{{ team.defeats }}</div>
             <div class="points"><div class="title">Points</div><br/>{{ team.points }}</div>
@@ -180,8 +180,15 @@ p{
 }
 
 @media (max-width: 1160px) {
+  h3{
+    font-size: 25px;
+  }
+  .brackets{
+    padding: 0 10px;
+  }
   .br{
     max-width: 100%;
+    padding: 0;
   }
 }
 

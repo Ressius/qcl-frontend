@@ -8,7 +8,7 @@
         <a href="https://twitter.com/qclontop"><font-awesome-icon :icon="['fab', 'x-twitter']" /></a>
       </div>
 
-      <div class="row">
+      <div class="row footerrow">
           <ul>
             <li><a href="/">Accueil</a></li>
             <li><a href="/franchises">Franchises</a></li>
@@ -19,8 +19,8 @@
             <li><a href="/stats">Statistiques</a></li>
           </ul>
       </div>
-      <div class="row">
-        QCL Copyright © 2024 Quebec Champions League - Tout droits réservés || Conçu par Anthony Dumulong
+      <div class="row copyright">
+        QCL Copyright © 2024 Quebec Champions League - Tout droits réservés || Conçu par Anthony Dumulong, adaptation aux appareils mobile par Manuel Roy-Boisvert
       </div>
     </div>
   </footer>
@@ -80,6 +80,10 @@
   font-size:0.8em;
   }
 
+  .copyright{
+    padding: 30px !important;
+  }
+
   .footer .row a{
   text-decoration:none;
   color:gray;
@@ -113,4 +117,12 @@
     background-color: white;
     color: black;
   }
+  
+  @media (max-width: 1000px){
+    .footerrow{
+      display: none;
+    }
+  }
+
+  
 </style>
