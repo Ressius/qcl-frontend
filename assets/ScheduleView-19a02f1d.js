@@ -1,0 +1,1 @@
+import{S as s}from"./SmallHeroHeader-26c0e3df.js";import{r as t,o,c as r,w as c,a as e,b as n,S as _}from"./index-90c35dbb.js";const l={class:"content"},h={__name:"ScheduleView",setup(m){return(d,p)=>{const a=t("stream");return o(),r(a,null,{default:c(()=>[e(s,{msg:"Horaire des Matchs"}),n("div",l,[e(_)])]),_:1})}}};export{h as default};
